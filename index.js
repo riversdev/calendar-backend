@@ -26,6 +26,11 @@ app.use(express.json())
 app.use('/api/auth', authRouter)
 app.use('/api/events', eventsRouter)
 
+// frontend
+app.get('*', (req, res) => {
+    res.sendFile(__dirname + '/public/index.html')
+})
+
 // escuchando las peticiones
 app.listen(process.env.PORT, () => {
     console.log(`servidor corriendo en el puerto ${process.env.PORT}`)
